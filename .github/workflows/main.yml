@@ -1,0 +1,24 @@
+name: Bun React Tests CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository letöltése
+        uses: actions/checkout@v4
+
+      - name: Bun telepítése
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Függőségek telepítése
+        run: bun install
+
+      - name: Tesztek futtatása
+        run: bun test --env browser
