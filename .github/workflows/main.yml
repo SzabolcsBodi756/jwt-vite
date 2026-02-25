@@ -7,15 +7,16 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: jwt-vite
 
     steps:
-      - name: Repository letöltése
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Bun telepítése
-        uses: oven-sh/setup-bun@v2
+      - uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest
+          bun-version: 1.3.9
 
       - name: Függőségek telepítése
         run: bun install
